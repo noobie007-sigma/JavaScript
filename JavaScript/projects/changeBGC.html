@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Background Color</title>
+</head>
+<style> 
+    
+</style>
+<body>
+
+    <h1>Change Background Color Project!</h1>
+    
+    <div id="buttons">
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+    </div>
+    
+</body>
+<script>
+    // let intervalID;
+    // let color = 0
+
+    // let colors_arr = ['yellow', 'orange', 'red', 'blue', 'green', 'brown', 'gray', 'pink']
+
+    // document.querySelector('#start').addEventListener('click', (e) => {
+    //     intervalID = setInterval(() => {
+    //         // let color = Math.floor(Math.random() * (colors_arr.length - 0 + 1))
+    //         document.body.style.backgroundColor = colors_arr[color]
+    //         color = color + 1
+
+    //     }, 1000)
+    // });
+
+    // document.querySelector('#stop').addEventListener('click', (e) => {
+    //     clearInterval(intervalID)
+    // });
+
+    const randomColor = function() {
+        const hex = '0123456789ABCDEF'
+        let color = '#'
+        for(let i = 0; i < 6; i++){
+        let index =  Math.floor(Math.random() * 15)
+
+            color += hex[index]
+        }
+        return color;
+    }
+    let intervalID = null
+
+    document.querySelector('#start').addEventListener('click', () => {
+        if(!intervalID) { 
+             //This is done because, if i click on start button multiple times, then multiple background changes mught be happening without waiting for previous one to finish. This ensures that a new interval is created on;y when intervalID is null, i.e. no interval initiated.
+            intervalID = setInterval(() => {
+            document.body.style.backgroundColor = randomColor();
+        }, 1000)
+        }
+    })
+
+    document.querySelector('#stop').addEventListener('click', () => {
+        if(intervalID){
+            //This is done because, it makes sure if intervalID is not null, that means an interval is ongoing. So then only it will terminate this inteval. After this, since interval is cleared, and no current interval is running, so intervalID is again set back to null. 
+            clearInterval(intervalID)
+            intervalID = null
+        }
+    })
+</script>
+</html>

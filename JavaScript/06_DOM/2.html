@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>DOM</title>
+    <style>
+        .bg-black {
+            background-color: #212121;
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <div>
+       <h1 id="title" class="heading">Learning DOM from Chai aur Code <span style="display: none;">test content</span></h1>
+       <h2>Lorem ipsum dolor sit amet.</h2>
+       <h2>Lorem ipsum dolor sit amet.</h2>
+       <h2>Lorem ipsum dolor sit amet.</h2>
+       <p>Lorem ipsum dolor sit amet.</p>
+       <input type="password"/>
+       <ul>
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+       </ul>
+    </div>
+</body>
+
+</html>
+
+<!-- to target any element in a document, we have some methods:
+1) getElementById()
+2) getElementsByClassName()
+3) getElementsByName()
+4) getElementsByTagName(),
+5) querySelector() and querySelectorAll()
+6) firstChild and lastChild
+7) parentNode and childNodes
+8) nextSibling and previousSibling
+
+
+We get various methods and properties after we select an element, for ex- 
+document.getELementById('title').id gives id of element
+document.getELementById('title').className gives class of element
+document.getELementById('title').getAttribute('attributeName') gives specified attribute of the element.
+
+We can also set an attribute of an element through console using setAttribute() method. It takes 2 arguments: first is the attribute name, second is the value. And if initially attribute (lets say class), was set to 'heading' and now i used setAttribute('class', 'test'), then actual HTML element will have class attrubute value as 'test', i.e. value will be over written!
+
+
+We can also set style values to an element. For ex-
+let element = document.getELementById('title')
+element.style.backgroundColor = 'green'
+element.style.padding = '15px'
+element.style.borderRadius = '15px'
+
+We have 3 ways to get the content written inside an HTML element: textContent, innerText and innerHTML.
+ - element.innerText gives the actual content inside the element which is visible on the webpage.
+ - element.textContent gives the actual text content inside HTML element, whether or not visible on webpage
+ - element.innerHTML gives the HTML tags also written inside that element. It also shows all the inline html written inside the selected html element, while other 2 only show the text content.
+ for ex- use these 3 properties on browser for document.getElementById('title')
+
+
+ querySelector(): The document method querySelector() returns the first element within the document that matches the specified selector, or group of selectors. Parameter(s) should be a string containing one or more selectors. This string must be a valid CSS selector string. A null is returned if no such element is found.
+
+ querySelectorAll() returns a static nodelist containing all the elements with the specified CSS selector, present within the document. An empty nodelist is returned if no such element is found.
+
+ //https://chat.openai.com/c/e0b1346f-b8ab-44b6-9446-fc3095b9bc82
+ lets say you want to select a tag with a specified attribute. for ex input field with type='password'. For this, document.querySelector('input[type='password']')
+querySelector() exercise: Turn 2nd li element of ul ka background as green.
+SOLUTION: document.querySelector(ul li:nth-child(2))
+
+We know that querySelectorAll() returns a NodeList. So if I want to modify an element of that nodelist, I can do this by selecting that element using its index and then modify. For ex, in this webpage,
+document.querySelectorAll('h2')[1].style.color = 'yellow'
+Keep in mind that we cannot apply any change to the nodelist, but only to an element of  nodelist. Even if nodelist has only 1 element, then also we have to use myNodeList[0] to access the element and apply changes.
+
+But if we want to apply same change to all elements of a nodelist, for this we have forEach() loop.
+So, if we want to have text color as yellow of all the h2 elements,..
+document.querySelectorAll('h2').forEach((element) => element.style.color = 'yellow') 
+
+
+querySelectorAll() returns a NodeList and getELementsByClassName() returns a HTMLCollection, both of which are array like structures. So if we want to convert them into array, we can pass out NodeList or HTMLCollection to Array.from().
+
+
+for assignment, refer last chat on this link: https://chat.openai.com/c/e0b1346f-b8ab-44b6-9446-fc3095b9bc82
+
+-->

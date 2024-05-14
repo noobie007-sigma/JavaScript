@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>DOM</title>
+</head>
+<body>
+    <div class="bg-black">
+       <h1 class="heading">Learning DOM from Chai aur Code</h1>
+       <p>Lorem ipsum dolor sit amet.</p>
+    </div>
+</body>
+
+</html>
+
+<!-- DOM serves as an intermediary layer that allows programming languages, particularly Javascript, to interact with and manipulate the content and structure of web documents(HTML documents that define the structure and content of a webpage)
+
+* It provides a standardized way to represent the elements of a document as objects, creating a programmable interface for developers to dynamically update and modify the contents of a webpage.
+
+* DOM represents the sturcture of a document as a tree of objects where each object corresponds to a part of the document, such as elements, attributes, and texts.
+
+* Tree Structure: DOM represents HTML doc as a tree structure, where each node in the tree represents an object(element, attribute, text) in the doc.
+
+* Document Node: Top-level node in the DOM tree is the document node, which represents the entire document.
+
+* Nodes: There are different types of nodes:- element nodes, attribute nodes and text nodes.
+
+* Element Nodes: ex- <div>, <p>, <a>
+
+* Attribute Nodes: ex- id, class, etc
+
+* Text Nodes: They represent the text content within an element.
+
+* Manipulation: JS is used to manipulate the DOM dynamically. We can create, modify, delete elements and attributes using DOM methods and properties.
+ 
+* Events: DOM allows us to handle events, like user interctions(clicks, keypresses) or changes in document. Event listeners can be attatched to elements to respond to these events.
+
+* Dynamic Update: DOM can dynamically update the content of the document without requiring a full page reload.
+-->
+
+
+
+<!-- do console.log(window) then go to document object, and there you get the whole html document. You can also use console.log(document) to directly access the document. Also you can use console.dir(document) -->
+
+
+/*
+DOM Tree:
+
+          Window
+            |
+        Document
+            |
+          HTML - Head - title - text node
+                      - meta - attribute
+
+               - Body - div 
+                          - attribute Node
+                          - h1 - attribute 
+                               - text node
+                          - p - text node 
+
+
+*/
+
+<!--We can get many information of the webpage from developer's console. for ex to get base url, do console.log(document.baseURI).
+
+To get all the links, do console.log(document.links). These are HTML collections or node collections, not arrays by default. So to access them, we need to convert them into array or as per our requirements. Arrays.from(document.links)
+
+We can select an element in the webpage, using element id, class, name, etc.
+document.getELementById('id')
+
+Now that we have the element, we can manipulate it. For ex- use innerHTML
+document.getElementById('id').innerHTML = "Chai Aur Code"-->

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+</head>
+<body style="background-color: #414141; color: aliceblue">
+    <h2>Amazing Images</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li> 
+        </ul>
+   </div>
+</body>
+<script>
+        
+        //Events are typically handled using event listeners. An event listener is a function that 'listens' for a specific event to occur and then executes a designated piece of code in response.
+
+        //Event Object: When an event occurs, an event object is created and passed to the event-handler function. This objecct contains information about the event, such as type of event, the target element, and more.
+
+
+        // document.getElementById('owl').onclick = () => {
+        //     alert('It is an Owl!')
+        // }
+
+        //But using event listeners is generally considered more scalable and flexible compared to inline events like onclick.
+
+        //'addEventListener()' is a method to attach an event listener to a specified element.
+        /* element.addEventListener(eventType, listenerFunction, useCapture)
+         where usecapture is an optional boolean value indicating whether to use capture phase (true), or the bubbling phase (false) when handlling the event.
+        */
+
+
+        //Event Propagation in DOM occurs in 2 phases: capturing phase and Bubbling Phase.
+        /*
+        1) Capturing Phase (Top to Bottom): Direction is from outermost ancestor to the target element. Events are captured on the way down to the target element. useCapture parameter should be set to  true, to capture these events. 
+
+        2) Target Phase: event listeners without specifying useCapture parameter, or useCapture set to false will get triggered.
+
+        3) Bubbling Phase (Bottom to Top): Directon is from target element back up to the outermost ancestor.
+        */
+
+
+
+        // document.getElementById('owl').addEventListener('click', (eventObj) => {
+        //     alert('Owl clicked!')
+        // })
+
+        // document.getElementById('owl').addEventListener('click', (e) => {
+        //     console.log(e);
+        // })
+        
+
+        document.getElementById('images').addEventListener('click', (e) => {
+            console.log("Clicked inside the ul");
+        }, false)
+        document.getElementById('owl').addEventListener('click', (e) => {
+            console.log("Owl Clicked");
+
+            //to stop event propagation, do following:
+            e.stopPropagation()
+
+        }, false)
+
+
+        //to prevent defalut behaviour:
+
+        document.getElementById('google').addEventListener('click', (e) => {
+            e.preventDefault()
+            if(e.defaultPrevented){
+                alert("Default action prevented")
+            }
+            
+            //preventDefault() is a method that prevents the default action of an element, when an event occurs on it. While defaultPrevented is a property of event object that tells if its default action got prevented or not.
+        })
+
+</script>
+</html>
+
+
+
+<!-- https://chat.openai.com/c/d9eeb0ec-1fa2-4eb1-a13a-288e1909f95b -->

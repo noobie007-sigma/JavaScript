@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- XMLHttpRequests (XHR) objects are used to interact with servers. We can retrieve data from a URL without having to do a full page refresh. The enables a webpage to update just a part of a page without disrupting what the user is doing. Though we have better option - fetch, but still it is used some where nowadays aslo.-->
+
+
+    <!--  This is XML readyState property
+        0	UNSENT =>	Client has been created. open() not called yet.
+        1	OPENED	 =>  open() has been called.
+        2	HEADERS_RECEIVED	=>  send() has been called, and headers and status are available.
+        3	LOADING	 =>  Downloading; responseText holds partial data.
+        4	DONE	=>   The operation is complete.
+     -->
+
+     
+</body>
+<script>
+    const requestURL = "https://api.github.com/users/hiteshchoudhary"
+    const xhr = new XMLHttpRequest()
+    //This is how we create an instance of xmlhttprequest
+    xhr.open('GET', requestURL)
+    //this open() method has a third parameter also, which is a boolean value indicating wheher the request should be asynchronous or not.
+    //after we send request, the states changes
+    xhr.onreadystatechange = function() {
+        console.log(xhr.readyState);
+        if(xhr.readyState === 4){
+            const data = this.responseText
+            console.log(data);
+            console.log(data.followers); //undefined, because when data comes from an url, it comes in the form of a string
+            console.log(typeof data);
+            //So to convert this data in sting format in objects, we can convert it into JSON
+
+            const Data = JSON.parse(data)
+            console.log(typeof Data)
+            console.log(Data.followers)
+
+            
+            const card = document.createElement('div')
+            card.innerHTML = `<table>
+                                  <tr>
+                                    <th>Followers</th>
+                                    <th>Profile Image</th>
+                                  </tr>
+                                  <tr>
+                                    <th><img src="${Data.avatar_url}"></th>
+                                    <th>${Data.followers}</th>
+                                  </tr>
+                              </table>
+                `
+            document.body.appendChild(card)
+        }
+    }
+    xhr.send()
+</script>
+</html>
+
+<!-- assignment: make a card after taking out image, followers, etc-->
+
+<!-- XMLHttpRequest: https://chat.openai.com/c/ca0e04bc-40db-4695-b162-0577f07b84d4 -->

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | Chai Aur Code</title>
+</head>
+<body style="background-color: #212121; color: #fff">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+    function addLanguage(lang){
+        const newLi = document.createElement('li')
+        newLi.innerHTML = lang
+        document.querySelector('.language').appendChild(newLi)
+
+    }
+    addLanguage('Java')
+    addLanguage('TypeScript')
+
+    //This method addLanguage() to add new list items is an expensive method, when number of existing list items are huge, because to add new li, it is traversing all the way to the end of the list.
+
+    //Here is an optimised approach:
+
+    function addLangOptimised(lang){
+        const newLi = document.createElement('li')
+        newLi.appendChild(document.createTextNode(lang))
+        document.querySelector('.language').appendChild(newLi)
+    }
+    addLangOptimised('Python')
+    addLangOptimised('C++')
+    addLangOptimised('PHP')
+
+
+    //Edit Value: Edit 5th value of this list
+    const langToEdit = document.querySelector('li:nth-child(5)')
+    // langToEdit.innerText = 'C' again, its not an optimised approach.
+    const newLi = document.createElement('li')
+    newLi.textContent = 'C'
+    langToEdit.replaceWith(newLi)
+
+    //Remove an element: remove php
+    const langToRemove = document.querySelector('li:last-child')
+    langToRemove.remove()
+</script>
+</html>
+
+
+// parent to child
+//child to sibling
+//child to parent
+//create new element
+//Edit
+//delete

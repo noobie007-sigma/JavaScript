@@ -1,0 +1,3 @@
+# JavaScript and Classes
+
+## Yes JavsScript does have classes. This feature was introduced in ES6. However it is important to note that JavaScript is primarily a prototype-based language, and its classes are primariy a syntactic sugar over the existing prototype-based inheritence mechanisms. In other words, it provides a more familiar syntax for developers coming from class-based languages such as  Java or C++, but under the hood, it works somewhat differently.

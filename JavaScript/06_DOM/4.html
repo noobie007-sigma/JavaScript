@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | Chai Aur Code</title>
+</head>
+<body style="background-color: #212121; color: #fff">
+    
+</body>
+<script>
+    //To create a new element...
+    const divElem = document.createElement('div') //Here you pass the tagname as an argument. Though this element has been created, but it will not be visible on the webpage yet.
+    console.log(divElem);
+
+
+    //We can add attributes to this element as..
+    divElem.className = 'main'
+    divElem.id = 'myID'
+    divElem.setAttribute('title', 'generated div element')
+    divElem.style.backgroundColor = 'green'
+    divElem.style.padding = '12px'
+    divElem.innerHTML = '<h1>Chai Aur Code</h1>'
+
+
+    //All this properties of div element which we just added, is only loaded in memory, not visible on the webpage, because we have not attatched this element to the HTML Document.
+    document.body.appendChild(divElem)
+
+    //Alternate way to add textNode to an element is:
+    const text = document.createTextNode("Hi there! I am from createTextNode()")
+    divElem.appendChild(text)
+
+    //There might be a case where we want to add some text content to our existing HTML element. In that case we cant use innerHTML, because it will overwrite the whole value. Instead, createTextNode() will explicitly create a text node.
+
+    // divElem.innerText = "Hello"
+    // const newText = document.createTextNode("Hello")
+    // divElem.appendChild(newText)
+
+    //When I used innerText, Hello overwrites the previous content, whereas createTextNode() appended after previous content.
+</script>
+</html>
